@@ -1,0 +1,1598 @@
+{
+	"info": {
+		"_postman_id": "c3991c3a-c4ab-4325-8c2c-6bad4be7e196",
+		"name": "Node Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Api Service",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Sign In",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const body = pm.response.json()",
+											"",
+											"const hasAccessToken = !!body.accessToken",
+											"",
+											"pm.test(\"body should have accessToken\", () => {",
+											"    pm.expect(hasAccessToken).to.be.true",
+											"})",
+											"",
+											"if(hasAccessToken){",
+											"    pm.environment.set(\"api_access_token\", body.accessToken)",
+											"}",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@gmail.com\",\n    \"password\": \"b639b8ceba5e6b102f22e36e78dafbba\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/auth/sign-in",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"auth",
+										"sign-in"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"italo85199@gmail.com\",\n    \"password\": \"c814aa4bdf84cea2ffd2fbce4bae7946\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api_url}}/auth/sign-in",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"auth",
+												"sign-in"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1098"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"44a-VKsd59XpRdYyqUcwfqg/nlGTOws\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 01 Apr 2022 21:37:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"type\": \"Bearer\",\n    \"accessToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoiaXRhbG84NTE5OUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImNyZWF0ZWRBdCI6IjIwMjItMDQtMDFUMDE6MzA6MjIuMzQ2WiIsInVwZGF0ZWRBdCI6IjIwMjItMDQtMDFUMDE6MzA6MjIuMzQ2WiIsImlkIjoiNjI0NjU1YWU5NzViYmVlOThmYTUxNmE2In0sImlhdCI6MTY0ODg0OTA1NiwiZXhwIjoxNjQ4ODQ5OTU2fQ.xKoQO96xSg4iKwKO4zbCxD-_-3RGXCdAzOVkcBfJGcnIL8YSl3f5XP9FFYtK6cnjr_rssZcm1PckoU0TbV871XLEQWCLb6UGhqmVWf6aaZ_2AaJ3wEhDEjkZ6ZOQqu_hgvzU5L1QmsHWGianm5duwAYA4E1Pt3KT_drEUH6aqDl3L68A5hVXLXCStfFRZ1mG8ukGClQW9gL8Vf4x09Jt153vCdZwpIzI18W3jBBIHDNzZ9nSBt0WpjE9YKqgn5mXJcsFljVUzTRUvDy8yQcQgFEAcc02Go-YpqdbBXYNzJ_7K2-vxGWTlyVDyoG6LDLzYdWSguN9Y2sGKV_BVIm2-IflD-gFeujDQ-DhsY5lMjGi7MmY2dWdShI9umzOwf6R5PFhMWPTJ-yg_3QHr6DUnd6x6f3hAAlf2rMmfXtMwLNnyvXzW12rB0FZLR9rSETyZO_Ixi1OlCXhctSmYqKKi_uJx-1DhtE-v0UXhHTzrUqDtH33bi7mjPw7BZSurm2UqJD_8inznx2_wJnSH6VZmtWleglc4lUkKz6CuMHDKf0CryObz5WxMS5miLGBg3nmYe9E3K5tSRffFn8gQIGnSwoL-sbszI56GJZOfEDG_VyBgBAWfFaxV77OsMfvlr0JX04Nj-IO-ZwQDXSA-3MWzg9rA687baI-tWcWZ43rHTw\",\n    \"expiresIn\": \"2022-04-01T21:52:36.332Z\",\n    \"issuedAt\": \"2022-04-01T21:37:36.332Z\"\n}"
+								},
+								{
+									"name": "Validation Error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"italo85199@gmail.com\",\n    \"password\": \"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api_url}}/auth/sign-in",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"auth",
+												"sign-in"
+											]
+										}
+									},
+									"status": "Unprocessable Entity",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "83"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"53-rywQV9IFqkpElv2E49/rTk8MrLA\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 01 Apr 2022 21:38:35 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": {\n        \"name\": \"ValidationError\",\n        \"reason\": [\n            \"body.password is a required field\"\n        ]\n    }\n}"
+								},
+								{
+									"name": "Sign In Error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"italo85199@gmail.com\",\n    \"password\": \"123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api_url}}/auth/sign-in",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"auth",
+												"sign-in"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "74"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4a-NprvspIOsl5I511Aodv6Wxnf9cg\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 01 Apr 2022 21:39:11 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": {\n        \"name\": \"Auth.SignInError\",\n        \"reason\": [\n            \"wrong email or password\"\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Sign Up",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@gmail.com\",\n    \"role\": \"user\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/auth/sign-up",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"auth",
+										"sign-up"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"laysribeiro@gmail.com\",\n    \"role\": \"admin\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api_url}}/auth/sign-up",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"auth",
+												"sign-up"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "94"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5e-MO6iv9nPnGXBcIQyycywRili6Ao\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 01 Apr 2022 21:42:18 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"email\": \"laysribeiro@gmail.com\",\n    \"role\": \"admin\",\n    \"password\": \"fc2227aff2152214122dbf95e2831be7\"\n}"
+								},
+								{
+									"name": "Validation Error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"laysribeirogmail.com\",\n    \"role\": \"test\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api_url}}/auth/sign-up",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"auth",
+												"sign-up"
+											]
+										}
+									},
+									"status": "Unprocessable Entity",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "143"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"8f-LDqqCLU6EKkUu8LH5jMu09X8mmk\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 01 Apr 2022 21:40:18 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": {\n        \"name\": \"ValidationError\",\n        \"reason\": [\n            \"body.email must be a valid email\",\n            \"body.role must be one of the following values: user, admin\"\n        ]\n    }\n}"
+								},
+								{
+									"name": "UserAlreadyExists",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"laysribeiro@gmail.com\",\n    \"role\": \"admin\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api_url}}/auth/sign-up",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"auth",
+												"sign-up"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "119"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"77-pyFf3vtm0x+ZkG5SL9MsawPeU08\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 01 Apr 2022 21:43:02 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": {\n        \"name\": \"Auth.UserAlreadyExists\",\n        \"reason\": [\n            \"user with email: laysribeiro@gmail.com already have an account\"\n        ]\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Stock",
+					"item": [
+						{
+							"name": "Get Quote",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{api_access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/stock/quotes?symbol=A.US",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"stock",
+										"quotes"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "A.US"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "authorization",
+												"value": "Bearer {{api_access_token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{api_url}}/stock/quotes?symbol=AAPL.US",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"stock",
+												"quotes"
+											],
+											"query": [
+												{
+													"key": "symbol",
+													"value": "AAPL.US"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "130"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"82-9bxrjDw7NSqHbnqF7GEJjX6aor0\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 01 Apr 2022 21:45:16 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"name\": \"APPLE\",\n    \"symbol\": \"AAPL.US\",\n    \"open\": 174.03,\n    \"high\": 174.88,\n    \"low\": 171.94,\n    \"close\": 174.31,\n    \"createdAt\": \"2022-04-01T21:45:16.941Z\"\n}"
+								},
+								{
+									"name": "QuoteNotFound",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "authorization",
+												"value": "Bearer {{api_access_token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{api_url}}/stock/quotes?symbol=UT.US",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"stock",
+												"quotes"
+											],
+											"query": [
+												{
+													"key": "symbol",
+													"value": "UT.US"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "95"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5f-WAU9QdevT2/hsm/AJ1cDazC2QQc\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 01 Apr 2022 21:45:37 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": {\n        \"name\": \"Stock.QuoteNotFound\",\n        \"reason\": [\n            \"stock quote with symbol='UT.US' not found\"\n        ]\n    }\n}"
+								},
+								{
+									"name": "ValidationError",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "authorization",
+												"value": "Bearer {{api_access_token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{api_url}}/stock/quotes",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"stock",
+												"quotes"
+											]
+										}
+									},
+									"status": "Unprocessable Entity",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "82"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"52-iglCo5wdR8kqCLYwQFw3WnsSZm4\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 01 Apr 2022 21:45:50 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": {\n        \"name\": \"ValidationError\",\n        \"reason\": [\n            \"query.symbol is a required field\"\n        ]\n    }\n}"
+								},
+								{
+									"name": "EnsureAuthorizationError",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "authorization",
+												"value": "Bearer {{api_access_token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{api_url}}/stock/quotes",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"stock",
+												"quotes"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "92"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5c-wawzhE8/V+XQPiLHYiE7v3G0FPM\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 01 Apr 2022 21:46:00 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": {\n        \"name\": \"Auth.EnsureAuthorizationError\",\n        \"reason\": [\n            \"missing authorization header\"\n        ]\n    }\n}"
+								},
+								{
+									"name": "EnsureAuthorizationError",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "authorization",
+												"value": "Bearer {{api_access_token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{api_url}}/stock/quotes",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"stock",
+												"quotes"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "77"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4d-hXl0LH73/g0yCXDTQaVj/ZRgAaE\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 01 Apr 2022 23:05:37 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": {\n        \"name\": \"Auth.EnsureAuthorizationError\",\n        \"reason\": [\n            \"invalid token\"\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get User Quote History",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{api_access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/stock/history",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"stock",
+										"history"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "authorization",
+												"value": "Bearer {{api_access_token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{api_url}}/stock/history",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"stock",
+												"history"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "2337"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"921-D77kb2T7cxIhwJJPzd/XdoDZjek\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 01 Apr 2022 21:47:40 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"count\": 14,\n    \"cursor\": null,\n    \"data\": [\n        {\n            \"name\": \"APPLE\",\n            \"symbol\": \"AAPL.US\",\n            \"open\": 174.03,\n            \"high\": 174.88,\n            \"low\": 171.94,\n            \"close\": 174.31,\n            \"createdAt\": \"2022-04-01T21:45:16.941Z\",\n            \"id\": \"6247726cfb59e4b1a93316f2\"\n        },\n        {\n            \"name\": \"UNITY SOFTWARE\",\n            \"symbol\": \"U.US\",\n            \"open\": 101.7,\n            \"high\": 103.64,\n            \"low\": 99.05,\n            \"close\": 99.21,\n            \"createdAt\": \"2022-04-01T13:22:17.327Z\",\n            \"id\": \"6246fc895658627b05855468\"\n        },\n        {\n            \"name\": \"ANGLOGOLD ASHANTI\",\n            \"symbol\": \"AU.US\",\n            \"open\": 24.01,\n            \"high\": 24.285,\n            \"low\": 23.68,\n            \"close\": 23.69,\n            \"createdAt\": \"2022-04-01T13:22:10.493Z\",\n            \"id\": \"6246fc825658627b05855465\"\n        },\n        {\n            \"name\": \"ALCOA\",\n            \"symbol\": \"AA.US\",\n            \"open\": 91.67,\n            \"high\": 92.7,\n            \"low\": 89.8006,\n            \"close\": 90.03,\n            \"createdAt\": \"2022-04-01T13:21:38.614Z\",\n            \"id\": \"6246fc625658627b05855462\"\n        },\n        {\n            \"name\": \"AGILENT TECHNOLOGIES\",\n            \"symbol\": \"A.US\",\n            \"open\": 135.17,\n            \"high\": 136.79,\n            \"low\": 132.29,\n            \"close\": 132.33,\n            \"createdAt\": \"2022-04-01T13:21:31.783Z\",\n            \"id\": \"6246fc5b5658627b0585545f\"\n        },\n        {\n            \"name\": \"AIR LEASE\",\n            \"symbol\": \"AL.US\",\n            \"open\": 44.51,\n            \"high\": 45.13,\n            \"low\": 44.26,\n            \"close\": 44.65,\n            \"createdAt\": \"2022-04-01T13:21:22.362Z\",\n            \"id\": \"6246fc525658627b0585545c\"\n        },\n        {\n            \"name\": \"AGILENT TECHNOLOGIES\",\n            \"symbol\": \"A.US\",\n            \"open\": 135.17,\n            \"high\": 136.79,\n            \"low\": 132.32,\n            \"close\": 132.33,\n            \"createdAt\": \"2022-04-01T01:53:15.944Z\",\n            \"id\": \"62465b0bb543f3f148bffa44\"\n        },\n        {\n            \"name\": \"APPLE\",\n            \"symbol\": \"AAPL.US\",\n            \"open\": 177.84,\n            \"high\": 178.03,\n            \"low\": 174.4,\n            \"close\": 174.61,\n            \"createdAt\": \"2022-04-01T01:52:40.018Z\",\n            \"id\": \"62465ae8b543f3f148bffa41\"\n        },\n        {\n            \"name\": \"APPLE\",\n            \"symbol\": \"AAPL.US\",\n            \"open\": 177.84,\n            \"high\": 178.03,\n            \"low\": 174.4,\n            \"close\": 174.61,\n            \"createdAt\": \"2022-04-01T01:52:38.757Z\",\n            \"id\": \"62465ae6b543f3f148bffa3e\"\n        },\n        {\n            \"name\": \"APPLE\",\n            \"symbol\": \"AAPL.US\",\n            \"open\": 177.84,\n            \"high\": 178.03,\n            \"low\": 174.4,\n            \"close\": 174.61,\n            \"createdAt\": \"2022-04-01T01:52:22.276Z\",\n            \"id\": \"62465ad6b543f3f148bffa3b\"\n        },\n        {\n            \"name\": \"APPLE\",\n            \"symbol\": \"AAPL.US\",\n            \"open\": 177.84,\n            \"high\": 178.03,\n            \"low\": 174.4,\n            \"close\": 174.61,\n            \"createdAt\": \"2022-04-01T01:50:22.156Z\",\n            \"id\": \"62465a5ec4ebed68375d4c4f\"\n        },\n        {\n            \"name\": \"APPLE\",\n            \"symbol\": \"AAPL.US\",\n            \"open\": 177.84,\n            \"high\": 178.03,\n            \"low\": 174.4,\n            \"close\": 174.61,\n            \"createdAt\": \"2022-04-01T01:47:52.970Z\",\n            \"id\": \"624659c855d22d72233fd0d7\"\n        },\n        {\n            \"name\": \"APPLE\",\n            \"symbol\": \"AAPL.US\",\n            \"open\": 177.84,\n            \"high\": 178.03,\n            \"low\": 174.4,\n            \"close\": 174.61,\n            \"createdAt\": \"2022-04-01T01:45:43.233Z\",\n            \"id\": \"62465947e8ab0da6e0a63697\"\n        },\n        {\n            \"name\": \"APPLE\",\n            \"symbol\": \"AAPL.US\",\n            \"open\": 177.84,\n            \"high\": 178.03,\n            \"low\": 174.4,\n            \"close\": 174.61,\n            \"createdAt\": \"2022-04-01T01:45:15.140Z\",\n            \"id\": \"6246592b1d7ab45b9a627486\"\n        }\n    ]\n}"
+								},
+								{
+									"name": "EnsureAuthorizationError",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "authorization",
+												"value": "Bearer {{api_access_token}}",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{api_url}}/stock/history",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"stock",
+												"history"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "92"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5c-wawzhE8/V+XQPiLHYiE7v3G0FPM\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 01 Apr 2022 21:47:48 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": {\n        \"name\": \"Auth.EnsureAuthorizationError\",\n        \"reason\": [\n            \"missing authorization header\"\n        ]\n    }\n}"
+								},
+								{
+									"name": "EnsureAuthorizationError",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "authorization",
+												"value": "Bearer {{api_access_token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{api_url}}/stock/history",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"stock",
+												"history"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "77"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4d-hXl0LH73/g0yCXDTQaVj/ZRgAaE\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 01 Apr 2022 23:05:49 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": {\n        \"name\": \"Auth.EnsureAuthorizationError\",\n        \"reason\": [\n            \"invalid token\"\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Most Requested Stocks",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer {{api_access_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/stock/stats",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"stock",
+										"stats"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "authorization",
+												"value": "Bearer {{api_access_token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{api_url}}/stock/stats",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"stock",
+												"stats"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "738"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"2e2-/TTKr65TsJxgi4ZNeltzma52EZg\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 01 Apr 2022 23:08:45 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"stock\": \"AAPL.US\",\n        \"createdAt\": \"2022-04-01T01:52:22.291Z\",\n        \"timesRequested\": 47,\n        \"updatedAt\": \"2022-04-01T21:45:16.962Z\",\n        \"id\": \"62465ad6b2f11065bed5ddc5\"\n    },\n    {\n        \"stock\": \"A.US\",\n        \"createdAt\": \"2022-04-01T01:53:15.953Z\",\n        \"timesRequested\": 3,\n        \"updatedAt\": \"2022-04-01T13:21:31.793Z\",\n        \"id\": \"62465b0bb2f11065bed5de7a\"\n    },\n    {\n        \"stock\": \"AA.US\",\n        \"createdAt\": \"2022-04-01T13:21:38.623Z\",\n        \"timesRequested\": 1,\n        \"updatedAt\": \"2022-04-01T13:21:38.623Z\",\n        \"id\": \"6246fc625d0fc3a9b6c028c3\"\n    },\n    {\n        \"stock\": \"AU.US\",\n        \"createdAt\": \"2022-04-01T13:22:10.497Z\",\n        \"timesRequested\": 1,\n        \"updatedAt\": \"2022-04-01T13:22:10.497Z\",\n        \"id\": \"6246fc825d0fc3a9b6c028cc\"\n    },\n    {\n        \"stock\": \"AL.US\",\n        \"createdAt\": \"2022-04-01T13:21:22.381Z\",\n        \"timesRequested\": 1,\n        \"updatedAt\": \"2022-04-01T13:21:22.381Z\",\n        \"id\": \"6246fc525d0fc3a9b6c028ba\"\n    }\n]"
+								},
+								{
+									"name": "Success - With Quantity",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "authorization",
+												"value": "Bearer {{api_access_token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{api_url}}/stock/stats?limit=1",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"stock",
+												"stats"
+											],
+											"query": [
+												{
+													"key": "limit",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "151"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"97-Ez00dFruINCT/21a5ooUkwEhbS0\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 01 Apr 2022 23:13:10 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"stock\": \"AAPL.US\",\n        \"createdAt\": \"2022-04-01T01:52:22.291Z\",\n        \"timesRequested\": 47,\n        \"updatedAt\": \"2022-04-01T21:45:16.962Z\",\n        \"id\": \"62465ad6b2f11065bed5ddc5\"\n    }\n]"
+								},
+								{
+									"name": "OnlyAdminError",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "authorization",
+												"value": "Bearer {{api_access_token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{api_url}}/stock/stats",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"stock",
+												"stats"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "79"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4f-Q39GsNgbSxcg8fFQUIVuOCrfvxg\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 01 Apr 2022 21:47:53 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": {\n        \"name\": \"Auth.OnlyAdminError\",\n        \"reason\": [\n            \"restricted to admin users\"\n        ]\n    }\n}"
+								},
+								{
+									"name": "EnsureAuthorizationError",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "authorization",
+												"value": "Bearer {{api_access_token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{api_url}}/stock/stats",
+											"host": [
+												"{{api_url}}"
+											],
+											"path": [
+												"stock",
+												"stats"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "77"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4d-hXl0LH73/g0yCXDTQaVj/ZRgAaE\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 01 Apr 2022 23:05:55 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"error\": {\n        \"name\": \"Auth.EnsureAuthorizationError\",\n        \"reason\": [\n            \"invalid token\"\n        ]\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/health-check",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"health-check"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/health-check",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"health-check"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1c-SWn9y82qjRQ09PUWofCmKoFqA44\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Apr 2022 21:48:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"app is running\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Stock Service",
+			"item": [
+				{
+					"name": "Get Quote",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{stock_url}}/quote?symbol=AA.US",
+							"host": [
+								"{{stock_url}}"
+							],
+							"path": [
+								"quote"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "AA.US"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{stock_url}}/quote?symbol=AAPL.US",
+									"host": [
+										"{{stock_url}}"
+									],
+									"path": [
+										"quote"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "AAPL.US"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "147"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"93-6y1LIHQWVg85GQvb1KVMUgLDRAI\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Apr 2022 21:48:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"symbol\": \"AAPL.US\",\n    \"date\": \"2022-04-01\",\n    \"time\": \"22:00:07\",\n    \"open\": 174.03,\n    \"high\": 174.88,\n    \"low\": 171.94,\n    \"close\": 174.31,\n    \"volume\": 78634914,\n    \"name\": \"APPLE\"\n}"
+						},
+						{
+							"name": "ValidationError",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{stock_url}}/quote",
+									"host": [
+										"{{stock_url}}"
+									],
+									"path": [
+										"quote"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a-bkMGWkYT+qecyyqljsVlOMwz9iA\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Apr 2022 21:48:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"name\": \"ValidationError\",\n        \"reason\": [\n            \"query.symbol is required\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "StockQuoteNotFound",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{stock_url}}/quote?symbol=UT.US",
+									"host": [
+										"{{stock_url}}"
+									],
+									"path": [
+										"quote"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "UT.US"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "94"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5e-3CLqxLRx2omcITk5CPDK6GL0suw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Apr 2022 21:48:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"name\": \"StockQuoteNotFound\",\n        \"reason\": [\n            \"stock quote with symbol='UT.US' not found\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{stock_url}}/health-check",
+							"host": [
+								"{{stock_url}}"
+							],
+							"path": [
+								"health-check"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{stock_url}}/health-check",
+									"host": [
+										"{{stock_url}}"
+									],
+									"path": [
+										"health-check"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1c-SWn9y82qjRQ09PUWofCmKoFqA44\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Apr 2022 23:06:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"app is running\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

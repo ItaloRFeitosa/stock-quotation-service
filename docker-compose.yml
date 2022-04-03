@@ -1,0 +1,52 @@
+version: "3.7"
+
+services:
+    api_service_mongo:
+        image: bitnami/mongodb
+        restart: unless-stopped
+        environment:
+            - MONGODB_USERNAME=mongo
+            - MONGODB_PASSWORD=mongo
+            - MONGODB_DATABASE=api-service-dev
+            - ALLOW_EMPTY_PASSWORD=yes
+            - MONGODB_ROOT_PASSWORD=mongo
+        volumes:
+            - ./.docker/api_service_mongo:/data/db
+        ports:
+            - "27017:27017"
+        networks:
+            - node_challenge_network
+    api_service:
+        container_name: api_service
+        build:
+            context: ./api-service
+            target: dev
+        restart: unless-stopped
+        volumes:
+            - ./api-service/src:/usr/src/app/src:rw
+        ports:
+            - "3001:3001"
+        environment:
+            - PORT=3001
+            - MONGO_URI=mongodb://root:mongo@api_service_mongo:27017/api-service-dev?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false
+            - STOCK_SERVICE_URL=http://stock_service:3002
+        networks:
+            - node_challenge_network
+    stock_service:
+        container_name: stock_service
+        build:
+            context: ./stock-service
+            target: dev
+        restart: unless-stopped
+        volumes:
+            - ./stock-service/src:/usr/src/app/src:rw
+        ports:
+            - "3002:3002"
+        environment:
+            - PORT=3002
+            - STOCK_PROVIDER_CACHE_TTL=5000
+        networks:
+            - node_challenge_network
+networks:
+  node_challenge_network:
+    driver: bridge

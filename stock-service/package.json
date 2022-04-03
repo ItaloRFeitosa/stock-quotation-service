@@ -3,12 +3,31 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./src/application/server.js",
+    "dev": "nodemon ./src/application/server.js",
+    "test": "jest --verbose",
+    "test:unit": "jest --coverage=false --verbose --testPathPattern=tests/unit",
+    "test:integration": "jest --coverage=false --verbose --testPathPattern=tests/integration"
+  },
+  "imports": {
+    "#application/*": "./src/application/*.js",
+    "#core/*": "./src/core/*.js",
+    "#external/*": "./src/external/*.js",
+    "#stock/*": "./src/stock/*.js",
+    "#tests/*": "./tests/*.js"
   },
   "dependencies": {
     "debug": "~2.6.9",
     "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
+    "fast-csv": "^4.3.6",
+    "morgan": "~1.9.1",
+    "swagger-ui-express": "^4.3.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "jest": "^27.5.1",
+    "jest-json-schema": "^6.1.0",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
   }
 }
