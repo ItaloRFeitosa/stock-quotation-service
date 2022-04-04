@@ -16,6 +16,9 @@
       ],
       "#modules/*": [
         "./src/modules/*"
+      ],
+      "#tests/*": [
+        "./tests/*"
       ]
     }
   },

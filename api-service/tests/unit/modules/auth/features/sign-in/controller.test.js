@@ -1,4 +1,4 @@
-const { Ok, UnprocessedEntity, BadRequest } = require("#core/http/status-code");
+const { Ok, UnprocessedEntity, BadRequest } = require("#core/http/response");
 const { ValidationError } = require("#core/validation");
 const {
   SignInController,

@@ -1,1 +1,1 @@
-test.todo("do test")
+test.todo(`write test for ${__dirname}`)
