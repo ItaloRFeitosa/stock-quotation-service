@@ -1,0 +1,1324 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Node Challenge - API Service",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3001/v1"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Health"
+    },
+    {
+      "name": "Auth"
+    },
+    {
+      "name": "Stock"
+    }
+  ],
+  "paths": {
+    "/health-check": {
+      "get": {
+        "tags": ["Health"],
+        "summary": "Health Check",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "28"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"1c-SWn9y82qjRQ09PUWofCmKoFqA44\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 01 Apr 2022 23:06:07 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "app is running"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/sign-in": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Sign In",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "email": "italo85199@gmail.com",
+                  "password": "c814aa4bdf84cea2ffd2fbce4bae7946"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "1098"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"44a-VKsd59XpRdYyqUcwfqg/nlGTOws\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 01 Apr 2022 21:37:36 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "type": "Bearer",
+                  "accessToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoiaXRhbG84NTE5OUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImNyZWF0ZWRBdCI6IjIwMjItMDQtMDFUMDE6MzA6MjIuMzQ2WiIsInVwZGF0ZWRBdCI6IjIwMjItMDQtMDFUMDE6MzA6MjIuMzQ2WiIsImlkIjoiNjI0NjU1YWU5NzViYmVlOThmYTUxNmE2In0sImlhdCI6MTY0ODg0OTA1NiwiZXhwIjoxNjQ4ODQ5OTU2fQ.xKoQO96xSg4iKwKO4zbCxD-_-3RGXCdAzOVkcBfJGcnIL8YSl3f5XP9FFYtK6cnjr_rssZcm1PckoU0TbV871XLEQWCLb6UGhqmVWf6aaZ_2AaJ3wEhDEjkZ6ZOQqu_hgvzU5L1QmsHWGianm5duwAYA4E1Pt3KT_drEUH6aqDl3L68A5hVXLXCStfFRZ1mG8ukGClQW9gL8Vf4x09Jt153vCdZwpIzI18W3jBBIHDNzZ9nSBt0WpjE9YKqgn5mXJcsFljVUzTRUvDy8yQcQgFEAcc02Go-YpqdbBXYNzJ_7K2-vxGWTlyVDyoG6LDLzYdWSguN9Y2sGKV_BVIm2-IflD-gFeujDQ-DhsY5lMjGi7MmY2dWdShI9umzOwf6R5PFhMWPTJ-yg_3QHr6DUnd6x6f3hAAlf2rMmfXtMwLNnyvXzW12rB0FZLR9rSETyZO_Ixi1OlCXhctSmYqKKi_uJx-1DhtE-v0UXhHTzrUqDtH33bi7mjPw7BZSurm2UqJD_8inznx2_wJnSH6VZmtWleglc4lUkKz6CuMHDKf0CryObz5WxMS5miLGBg3nmYe9E3K5tSRffFn8gQIGnSwoL-sbszI56GJZOfEDG_VyBgBAWfFaxV77OsMfvlr0JX04Nj-IO-ZwQDXSA-3MWzg9rA687baI-tWcWZ43rHTw",
+                  "expiresIn": "2022-04-01T21:52:36.332Z",
+                  "issuedAt": "2022-04-01T21:37:36.332Z"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "74"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"4a-NprvspIOsl5I511Aodv6Wxnf9cg\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 01 Apr 2022 21:39:11 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "error": {
+                    "name": "Auth.SignInError",
+                    "reason": ["wrong email or password"]
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "83"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"53-rywQV9IFqkpElv2E49/rTk8MrLA\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 01 Apr 2022 21:38:35 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "error": {
+                    "name": "ValidationError",
+                    "reason": ["body.password is a required field"]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/sign-up": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Sign Up",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "email": "layscribeiro@gmail.com",
+                  "role": "admin"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "94"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"5e-MO6iv9nPnGXBcIQyycywRili6Ao\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 01 Apr 2022 21:42:18 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "email": "laysribeiro@gmail.com",
+                  "role": "admin",
+                  "password": "fc2227aff2152214122dbf95e2831be7"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "119"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"77-pyFf3vtm0x+ZkG5SL9MsawPeU08\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 01 Apr 2022 21:43:02 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "error": {
+                    "name": "Auth.UserAlreadyExists",
+                    "reason": [
+                      "user with email: laysribeiro@gmail.com already have an account"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "143"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"8f-LDqqCLU6EKkUu8LH5jMu09X8mmk\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 01 Apr 2022 21:40:18 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "error": {
+                    "name": "ValidationError",
+                    "reason": [
+                      "body.email must be a valid email",
+                      "body.role must be one of the following values: user, admin"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stock/quotes": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": ["Stock"],
+        "summary": "Get Quote",
+        "parameters": [
+          {
+            "name": "symbol",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "A.US"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "130"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"82-9bxrjDw7NSqHbnqF7GEJjX6aor0\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 01 Apr 2022 21:45:16 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "name": "APPLE",
+                  "symbol": "AAPL.US",
+                  "open": 174.03,
+                  "high": 174.88,
+                  "low": 171.94,
+                  "close": 174.31,
+                  "createdAt": "2022-04-01T21:45:16.941Z"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "92"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"5c-wawzhE8/V+XQPiLHYiE7v3G0FPM\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 01 Apr 2022 21:46:00 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "example-0": {
+                    "summary": "EnsureAuthorizationError",
+                    "value": {
+                      "error": {
+                        "name": "Auth.EnsureAuthorizationError",
+                        "reason": ["missing authorization header"]
+                      }
+                    }
+                  },
+                  "example-1": {
+                    "summary": "EnsureAuthorizationError",
+                    "value": {
+                      "error": {
+                        "name": "Auth.EnsureAuthorizationError",
+                        "reason": ["invalid token"]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "95"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"5f-WAU9QdevT2/hsm/AJ1cDazC2QQc\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 01 Apr 2022 21:45:37 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "error": {
+                    "name": "Stock.QuoteNotFound",
+                    "reason": ["stock quote with symbol='UT.US' not found"]
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "82"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"52-iglCo5wdR8kqCLYwQFw3WnsSZm4\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 01 Apr 2022 21:45:50 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "error": {
+                    "name": "ValidationError",
+                    "reason": ["query.symbol is a required field"]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stock/history": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": ["Stock"],
+        "summary": "Get User Quote History",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": 100
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "2337"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"921-D77kb2T7cxIhwJJPzd/XdoDZjek\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 01 Apr 2022 21:47:40 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "count": 14,
+                  "cursor": null,
+                  "data": [
+                    {
+                      "name": "APPLE",
+                      "symbol": "AAPL.US",
+                      "open": 174.03,
+                      "high": 174.88,
+                      "low": 171.94,
+                      "close": 174.31,
+                      "createdAt": "2022-04-01T21:45:16.941Z",
+                      "id": "6247726cfb59e4b1a93316f2"
+                    },
+                    {
+                      "name": "UNITY SOFTWARE",
+                      "symbol": "U.US",
+                      "open": 101.7,
+                      "high": 103.64,
+                      "low": 99.05,
+                      "close": 99.21,
+                      "createdAt": "2022-04-01T13:22:17.327Z",
+                      "id": "6246fc895658627b05855468"
+                    },
+                    {
+                      "name": "ANGLOGOLD ASHANTI",
+                      "symbol": "AU.US",
+                      "open": 24.01,
+                      "high": 24.285,
+                      "low": 23.68,
+                      "close": 23.69,
+                      "createdAt": "2022-04-01T13:22:10.493Z",
+                      "id": "6246fc825658627b05855465"
+                    },
+                    {
+                      "name": "ALCOA",
+                      "symbol": "AA.US",
+                      "open": 91.67,
+                      "high": 92.7,
+                      "low": 89.8006,
+                      "close": 90.03,
+                      "createdAt": "2022-04-01T13:21:38.614Z",
+                      "id": "6246fc625658627b05855462"
+                    },
+                    {
+                      "name": "AGILENT TECHNOLOGIES",
+                      "symbol": "A.US",
+                      "open": 135.17,
+                      "high": 136.79,
+                      "low": 132.29,
+                      "close": 132.33,
+                      "createdAt": "2022-04-01T13:21:31.783Z",
+                      "id": "6246fc5b5658627b0585545f"
+                    },
+                    {
+                      "name": "AIR LEASE",
+                      "symbol": "AL.US",
+                      "open": 44.51,
+                      "high": 45.13,
+                      "low": 44.26,
+                      "close": 44.65,
+                      "createdAt": "2022-04-01T13:21:22.362Z",
+                      "id": "6246fc525658627b0585545c"
+                    },
+                    {
+                      "name": "AGILENT TECHNOLOGIES",
+                      "symbol": "A.US",
+                      "open": 135.17,
+                      "high": 136.79,
+                      "low": 132.32,
+                      "close": 132.33,
+                      "createdAt": "2022-04-01T01:53:15.944Z",
+                      "id": "62465b0bb543f3f148bffa44"
+                    },
+                    {
+                      "name": "APPLE",
+                      "symbol": "AAPL.US",
+                      "open": 177.84,
+                      "high": 178.03,
+                      "low": 174.4,
+                      "close": 174.61,
+                      "createdAt": "2022-04-01T01:52:40.018Z",
+                      "id": "62465ae8b543f3f148bffa41"
+                    },
+                    {
+                      "name": "APPLE",
+                      "symbol": "AAPL.US",
+                      "open": 177.84,
+                      "high": 178.03,
+                      "low": 174.4,
+                      "close": 174.61,
+                      "createdAt": "2022-04-01T01:52:38.757Z",
+                      "id": "62465ae6b543f3f148bffa3e"
+                    },
+                    {
+                      "name": "APPLE",
+                      "symbol": "AAPL.US",
+                      "open": 177.84,
+                      "high": 178.03,
+                      "low": 174.4,
+                      "close": 174.61,
+                      "createdAt": "2022-04-01T01:52:22.276Z",
+                      "id": "62465ad6b543f3f148bffa3b"
+                    },
+                    {
+                      "name": "APPLE",
+                      "symbol": "AAPL.US",
+                      "open": 177.84,
+                      "high": 178.03,
+                      "low": 174.4,
+                      "close": 174.61,
+                      "createdAt": "2022-04-01T01:50:22.156Z",
+                      "id": "62465a5ec4ebed68375d4c4f"
+                    },
+                    {
+                      "name": "APPLE",
+                      "symbol": "AAPL.US",
+                      "open": 177.84,
+                      "high": 178.03,
+                      "low": 174.4,
+                      "close": 174.61,
+                      "createdAt": "2022-04-01T01:47:52.970Z",
+                      "id": "624659c855d22d72233fd0d7"
+                    },
+                    {
+                      "name": "APPLE",
+                      "symbol": "AAPL.US",
+                      "open": 177.84,
+                      "high": 178.03,
+                      "low": 174.4,
+                      "close": 174.61,
+                      "createdAt": "2022-04-01T01:45:43.233Z",
+                      "id": "62465947e8ab0da6e0a63697"
+                    },
+                    {
+                      "name": "APPLE",
+                      "symbol": "AAPL.US",
+                      "open": 177.84,
+                      "high": 178.03,
+                      "low": 174.4,
+                      "close": 174.61,
+                      "createdAt": "2022-04-01T01:45:15.140Z",
+                      "id": "6246592b1d7ab45b9a627486"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "92"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"5c-wawzhE8/V+XQPiLHYiE7v3G0FPM\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 01 Apr 2022 21:47:48 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "example-0": {
+                    "summary": "EnsureAuthorizationError",
+                    "value": {
+                      "error": {
+                        "name": "Auth.EnsureAuthorizationError",
+                        "reason": ["missing authorization header"]
+                      }
+                    }
+                  },
+                  "example-1": {
+                    "summary": "EnsureAuthorizationError",
+                    "value": {
+                      "error": {
+                        "name": "Auth.EnsureAuthorizationError",
+                        "reason": ["invalid token"]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stock/stats": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": ["Stock"],
+        "summary": "Get Most Requested Stocks",
+        "description": "Retrieves the 5 most requested stocks by default",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "example": "5"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "738"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"2e2-/TTKr65TsJxgi4ZNeltzma52EZg\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 01 Apr 2022 23:08:45 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": [
+                  {
+                    "stock": "AAPL.US",
+                    "createdAt": "2022-04-01T01:52:22.291Z",
+                    "timesRequested": 47,
+                    "updatedAt": "2022-04-01T21:45:16.962Z",
+                    "id": "62465ad6b2f11065bed5ddc5"
+                  },
+                  {
+                    "stock": "A.US",
+                    "createdAt": "2022-04-01T01:53:15.953Z",
+                    "timesRequested": 3,
+                    "updatedAt": "2022-04-01T13:21:31.793Z",
+                    "id": "62465b0bb2f11065bed5de7a"
+                  },
+                  {
+                    "stock": "AA.US",
+                    "createdAt": "2022-04-01T13:21:38.623Z",
+                    "timesRequested": 1,
+                    "updatedAt": "2022-04-01T13:21:38.623Z",
+                    "id": "6246fc625d0fc3a9b6c028c3"
+                  },
+                  {
+                    "stock": "AU.US",
+                    "createdAt": "2022-04-01T13:22:10.497Z",
+                    "timesRequested": 1,
+                    "updatedAt": "2022-04-01T13:22:10.497Z",
+                    "id": "6246fc825d0fc3a9b6c028cc"
+                  },
+                  {
+                    "stock": "AL.US",
+                    "createdAt": "2022-04-01T13:21:22.381Z",
+                    "timesRequested": 1,
+                    "updatedAt": "2022-04-01T13:21:22.381Z",
+                    "id": "6246fc525d0fc3a9b6c028ba"
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "77"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"4d-hXl0LH73/g0yCXDTQaVj/ZRgAaE\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 01 Apr 2022 23:05:55 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "error": {
+                    "name": "Auth.EnsureAuthorizationError",
+                    "reason": ["invalid token"]
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "79"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"4f-Q39GsNgbSxcg8fFQUIVuOCrfvxg\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 01 Apr 2022 21:47:53 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "error": {
+                    "name": "Auth.OnlyAdminError",
+                    "reason": ["restricted to admin users"]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "#application/*": [
+        "./src/application/*"
+      ],
+      "#core/*": [
+        "src/core/*"
+      ],
+      "#external/*": [
+        "./src/external/*"
+      ],
+      "#stock/*": [
+        "./src/stock/*"
+      ],
+      "#tests/*": [
+        "./tests/*"
+      ]
+    }
+  },
+  "typeAcquisition": {
+    "include": [
+      "jest"
+    ]
+  }
+}
