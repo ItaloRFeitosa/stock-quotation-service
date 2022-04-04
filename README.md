@@ -42,7 +42,7 @@ You can see the swagger page with the following URL’s:
 - API Service - `http://localhost:3001/v1/docs`
 - Stock Service - `http://localhost:3002/docs`
 
-Besides that, I made a Postman’s collection with all the endpoints available, more about that in the directory `./docs/postman`
+Besides that, I made a Postman’s collection with all the endpoints available, you can find them in the directory `./docs/postman`.
 
 # How to run tests
 
@@ -85,6 +85,7 @@ This is the user-facing API service, It have the following capabilities:
 - About the architecture of the service, it could be simpler, but I decided to implement an architecture based on some concepts of Clean Architecture and Hexagonal Architecture to show my knowledge about software architecture. With that, I got a decoupled, feature-oriented, framework-agnostic and more testable application.
 - The `/stock/stats`  has a limit query param to bring not only top 5, but any top list. Ex: `/stock/stats?limit=10` will bring the top 10.
 - The API Service is lacking unit tests, but the integration tests on the routes gave good coverage.
+- I didn't have time to add the password reset feature, but I would use some background job tool like [bull](https://github.com/OptimalBits/bull) and integrate the service with some email provider like Mailgun or Sendgrid.
 
 ## Stock Service
 
