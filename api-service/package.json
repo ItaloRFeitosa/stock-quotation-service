@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node ./src/application/server.js",
     "dev": "nodemon ./src/application/server.js",
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "test:unit": "jest --coverage=false --verbose --testPathPattern=tests/unit",
+    "test:integration": "jest --coverage=false --verbose --testPathPattern=tests/integration"
   },
   "dependencies": {
     "axios": "^0.26.1",
