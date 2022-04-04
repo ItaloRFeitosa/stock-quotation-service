@@ -83,7 +83,8 @@ This is the user-facing API service, It have the following capabilities:
 **Notes:**
 
 - About the architecture of the service, it could be simpler, but I decided to implement an architecture based on some concepts of Clean Architecture and Hexagonal Architecture to show my knowledge about software architecture. With that, I got a decoupled, feature-oriented, framework-agnostic and more testable application.
-- The `/stock/stats`  has a limit query param to bring not only top 5, but any top list. Ex: `/stock/stats?limit=10` will bring the top 10
+- The `/stock/stats`  has a limit query param to bring not only top 5, but any top list. Ex: `/stock/stats?limit=10` will bring the top 10.
+- The API Service is lacking unit tests, but the integration tests on the routes gave good coverage.
 
 ## Stock Service
 
@@ -91,5 +92,5 @@ This is the internal API service to query stock quotes within external API’s
 
 **Notes:**
 
-- About the architecture of the service, it simpler then the API service. I build based on Layered Architecture.
-- Added a simple in-memory cache to improve API performance and lessen the load for the external API. It could be easily replaced by a cache service like Redis. You can configure the TTL through the environment variable `STOCK_PROVIDER_CACHE_TTL` on docker-compose.
+- About the architecture of the service, it’s simpler then the API service. I built it based on Layered Architecture.
+- Added a simple in-memory cache to improve API performance and lessen the load for the external API. It could be easily replaced by a cache service like Redis. You can configure the TTL through environment variable `STOCK_PROVIDER_CACHE_TTL` on docker-compose.
